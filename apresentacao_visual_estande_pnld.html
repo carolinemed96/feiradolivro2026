@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação de Projeto - Estande FNDE / PNLD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --surface-color: #141414;
+            --text-main: #f5f5f5;
+            --text-muted: #a3a3a3;
+            --accent: #FF6B00;
+            --font-title: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* HEADER SECTION */
+        .hero-header {
+            padding: 60px 5% 40px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .hero-header h1 {
+            font-family: var(--font-title);
+            font-size: clamp(24px, 4vw, 42px);
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero-header p {
+            color: var(--text-muted);
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* PLANTA BAIXA & LEGENDA (PRIMEIRA SESSÃO) */
+        .blueprint-section {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+            padding: 60px 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        @media (max-width: 1024px) {
+            .blueprint-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .image-container {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            cursor: zoom-in;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .image-container:hover img {
+            transform: scale(1.02);
+        }
+
+        .tech-legend {
+            background: var(--surface-color);
+            padding: 40px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .tech-legend h2 {
+            font-family: var(--font-title);
+            font-size: 18px;
+            margin-bottom: 25px;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .info-group {
+            margin-bottom: 25px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        @media (max-width: 600px) {
+            .info-group { grid-template-columns: 1fr; }
+        }
+
+        .info-item {
+            font-size: 14px;
+        }
+
+        .info-item span {
+            display: block;
+            color: var(--text-muted);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .info-item strong {
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .environments {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .environments h3 {
+            font-family: var(--font-title);
+            font-size: 13px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .environments ol {
+            padding-left: 20px;
+            color: var(--text-muted);
+        }
+
+        .environments li {
+            font-size: 13.5px;
+            margin-bottom: 8px;
+            color: #ddd;
+        }
+
+        .environments li::marker {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* GALERIA FOCADA NAS IMAGENS */
+        .gallery-section {
+            padding: 20px 5% 80px;
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .gallery-full {
+            grid-column: 1 / -1;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .gallery-item {
+            position: relative;
+        }
+
+        .gallery-item .image-container {
+            border-radius: 8px;
+        }
+
+        .gallery-caption {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gallery-caption h3 {
+            font-family: var(--font-title);
+            font-size: 14px;
+            font-weight: 500;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .gallery-caption span {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-family: var(--font-body);
+        }
+
+        /* LIGHTBOX (VISUALIZAÇÃO EM TELA CHEIA) */
+        #lightbox {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        #lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 4px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+        }
+
+        #lightbox-close {
+            position: absolute;
+            top: 30px; right: 30px;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            line-height: 1;
+            font-family: var(--font-body);
+            transition: color 0.2s;
+        }
+
+        #lightbox-close:hover { color: var(--accent); }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        footer strong { color: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="hero-header">
+        <h1>Projeto Arquitetônico Institucional</h1>
+        <p>Apresentação Visual & Identificação de Ambientes</p>
+    </header>
+
+    <!-- SESSÃO 1: PLANTA BAIXA & LEGENDA (OBRIGATÓRIO PRIMEIRO) -->
+    <section class="blueprint-section">
+        <!-- Imagem da Planta Baixa -->
+        <div class="image-container" onclick="openLightbox(this)">
+            <img src="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/Imagem%20do%20ChatGPT%2030%20de%20set.%20de%202026,%2016_56_34.png" alt="Planta Baixa do Estande">
+        </div>
+
+        <!-- Legenda Técnica do Cliente -->
+        <div class="tech-legend">
+            <h2>LEGENDA TÉCNICA – PROJETO DE STAND</h2>
+            
+            <div class="info-group">
+                <div class="info-item">
+                    <span>Cliente</span>
+                    <strong>FNDE</strong>
+                    <div style="font-size:12px; color:var(--text-muted); margin-top:2px;">Fundo Nacional de Desenvolvimento da Educação</div>
+                </div>
+                <div class="info-item">
+                    <span>Projeto / Responsável</span>
+                    <strong>JMDT Empreendimentos</strong>
+                </div>
+            </div>
+
+            <div class="info-group">
+                <div class="info-item">
+                    <span>Evento</span>
+                    <strong>72ª Feira do Livro de Porto Alegre</strong>
+                </div>
+                <div class="info-item">
+                    <span>Local</span>
+                    <strong>Praça da Alfândega – Porto Alegre/RS</strong>
+                </div>
+            </div>
+
+            <div class="info-group">
+                <div class="info-item">
+                    <span>Período</span>
+                    <strong>30 Out a 15 Nov de 2026</strong>
+                </div>
+                <div class="info-item">
+                    <span>Dimensões & Área</span>
+                    <strong>10,00 m × 5,00 m (50,00 m²)</strong>
+                </div>
+            </div>
+
+            <div class="environments">
+                <h3>Identificação dos Ambientes</h3>
+                <ol>
+                    <li>Depósito de apoio</li>
+                    <li>Área de exposição de materiais didáticos e publicações</li>
+                    <li>Espaço de atendimento e reuniões</li>
+                    <li>Lounge para visitantes</li>
+                    <li>Área de circulação interna</li>
+                    <li>Painéis de comunicação visual institucional</li>
+                    <li>Estantes expositoras</li>
+                    <li>Monitores para conteúdo audiovisual</li>
+                    <li>Iluminação integrada à estrutura</li>
+                    <li>Elementos decorativos e paisagismo</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- SESSÃO 2: GALERIA DE PERSPECTIVAS FOCADA NAS IMAGENS -->
+    <section class="gallery-section">
+        
+        <!-- Perspectiva Principal (Grande) -->
+        <div class="gallery-item gallery-full">
+            <div class="image-container" onclick="openLightbox(this)">
+                <img src="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/882bce02-0220-4c94-97f0-24e9fcbe7e42.png" alt="Perspectiva Geral">
+            </div>
+            <div class="gallery-caption">
+                <h3>Vista Isométrica & Volumetria</h3>
+                <span>Clique para ampliar</span>
+            </div>
+        </div>
+
+        <div class="gallery-grid">
+            <!-- Frontal -->
+            <div class="gallery-item">
+                <div class="image-container" onclick="openLightbox(this)">
+                    <img src="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/Screenshot%202026-09-30%20172053.png" alt="Fachada Frontal">
+                </div>
+                <div class="gallery-caption">
+                    <h3>Fachada Principal & Testeira</h3>
+                    <span>Clique para ampliar</span>
+                </div>
+            </div>
+
+            <!-- Lateral -->
+            <div class="gallery-item">
+                <div class="image-container" onclick="openLightbox(this)">
+                    <img src="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/Screenshot%202026-09-30%20171608.png" alt="Vista Lateral">
+                </div>
+                <div class="gallery-caption">
+                    <h3>Lateral Esquerda & Estantes</h3>
+                    <span>Clique para ampliar</span>
+                </div>
+            </div>
+
+            <!-- Lounge -->
+            <div class="gallery-item">
+                <div class="image-container" onclick="openLightbox(this)">
+                    <img src="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/Imagem%20do%20ChatGPT%2030%20de%20set.%20de%202026,%2017_01_36.png" alt="Área de Lounge">
+                </div>
+                <div class="gallery-caption">
+                    <h3>Lounge, Puffs e Arquibancada</h3>
+                    <span>Clique para ampliar</span>
+                </div>
+            </div>
+
+            <!-- Sala Reunião -->
+            <div class="gallery-item">
+                <div class="image-container" onclick="openLightbox(this)">
+                    <img src="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/Screenshot%202026-09-30%20171701.png" alt="Sala de Reunião Interna">
+                </div>
+                <div class="gallery-caption">
+                    <h3>Espaço de Atendimento Interno</h3>
+                    <span>Clique para ampliar</span>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer>
+        Projeto e Apresentação Visual por <strong>JMDT Empreendimentos</strong>
+    </footer>
+
+    <!-- LIGHTBOX (SCRIPT) -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <span id="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Imagem Ampliada">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(element) {
+            const imgSrc = element.querySelector('img').src;
+            lightboxImg.src = imgSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Impede o scroll de fundo
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            setTimeout(() => { lightboxImg.src = ''; }, 300);
+            document.body.style.overflow = 'auto'; // Retorna o scroll
+        }
+
+        // Fecha com a tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape" && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
