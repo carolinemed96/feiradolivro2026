@@ -7,6 +7,76 @@
 .plant-title{margin:0 0 14px;font-size:1.13rem;font-weight:700}
 #distribuicao .image-button{width:100%;display:block}
 #distribuicao .image-button img{width:100%;height:auto;object-fit:contain}
+
+/* Correções de navegação: cabeçalho acompanha a rolagem, sem cobrir o conteúdo. */
+html, body { min-height:100%; overflow-x:hidden; overflow-y:auto; }
+.top { position:relative; top:auto; }
+.top-inner { max-width:1200px; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:10px 16px; }
+.brand { min-width:0; overflow-wrap:anywhere; }
+.nav { grid-column:1/-1; display:flex; flex-wrap:wrap; overflow:visible; width:100%; gap:4px; }
+.nav a { font-size:clamp(12px,1.1vw,14px); padding:8px 10px; }
+.actions { grid-column:2; grid-row:1; justify-content:flex-end; }
+section { scroll-margin-top:18px; }
+@media(max-width:680px) {
+  .top-inner { display:flex; flex-direction:column; align-items:stretch; padding:12px 14px; }
+  .brand { font-size:clamp(16px,4.2vw,22px); letter-spacing:.015em; }
+  .brand small { font-size:12px; }
+  .nav { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:5px; }
+  .nav a { font-size:12px; white-space:normal; text-align:center; padding:9px 4px; overflow-wrap:anywhere; }
+  .actions { display:flex; flex-wrap:wrap; width:100%; justify-content:flex-start; }
+  .btn { padding:9px 11px; font-size:12px; }
+}
+@media(max-width:360px) {
+  .nav { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+
+/* Ajustes finais de responsividade e exportação colorida */
+html{width:100%;scroll-padding-top:12px}body{width:100%;overflow-x:clip;overflow-y:auto}
+img,video{max-width:100%;height:auto} .media,.panel,.photo,.fact,.image-button{min-width:0}
+.top-inner,.columns,.gallery,.specgrid,.facts{min-width:0}
+.pdf-video-link{display:none}
+@media(max-width:800px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.columns,.specgrid{grid-template-columns:minmax(0,1fr)} }
+@media(max-width:600px){
+ body{font-size:14px}.top{position:relative}.top-inner{display:flex;flex-direction:column;align-items:stretch;gap:10px;padding:12px}
+ .brand{font-size:clamp(16px,5vw,23px);line-height:1.25}.nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;gap:5px;overflow:visible}
+ .nav a{display:block;text-align:center;white-space:normal;overflow-wrap:anywhere;padding:11px 5px;font-size:12px;background:#1a2434}
+ .actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;width:100%}.actions .btn{width:100%;font-size:12px;padding:10px 6px;text-align:center}
+ main{padding:14px 10px 32px}.hero{padding:22px 16px}.gallery,.facts,.columns,.specgrid{grid-template-columns:minmax(0,1fr)}
+ .photo,.panel,.fact{padding:14px} .media video{width:100%;height:auto;aspect-ratio:16/9} .image-button{max-width:100%}
+ .spec-tabs,.filters{display:flex;flex-wrap:wrap;gap:6px}.spec-tabs button,.filters button{font-size:12px;min-height:40px}
+ .overlay .bar{flex-wrap:wrap;gap:8px}.overlay .bar>div{display:flex;flex-wrap:wrap;gap:4px}.overlay .bar button,.overlay .bar a{font-size:12px;padding:8px}
+}
+@media print{
+ @page{size:A4 portrait;margin:11mm}
+ html,body{overflow:visible!important;width:auto!important;background:#0c1019!important;color:#eef3f9!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+ *,*::before,*::after{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+ .top,.actions,.overlay,.filters,.spec-tabs,.no-print{display:none!important}
+ main{max-width:100%!important;padding:0!important}
+ section{margin-bottom:24px!important;break-inside:auto!important;page-break-inside:auto!important}
+ .hero,.panel,.fact,.photo,.media{background:#171e2b!important;color:#eef3f9!important;border:1px solid #334052!important;box-shadow:none!important}
+ .hero{background:#1b2230!important}
+ h1,h2,h3,strong,.fact strong,.eyebrow{color:#e7b761!important}
+ p,li,.media-note,.muted,.photo-foot,.fact small{color:#e8edf7!important}
+ .gallery{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+ .photo,.photo[hidden],.photo.hidden{display:block!important;visibility:visible!important;break-inside:avoid!important;page-break-inside:avoid!important;padding:9px!important}
+ .photo img,.image-button img{display:block!important;visibility:visible!important;width:100%!important;max-width:100%!important;object-fit:contain!important}
+ .photo .image-button{height:auto!important;min-height:0!important}
+ .gallery .image-button img{height:145px!important;max-height:145px!important;object-fit:contain!important}
+ #distribuicao .image-button{height:auto!important;min-height:0!important}#distribuicao .image-button img{height:auto!important;max-height:190mm!important;object-fit:contain!important}
+ .image-error{display:none!important}
+ .spec-panel,.spec-panel[hidden]{display:block!important;break-inside:auto!important}
+ .specgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .columns{grid-template-columns:1fr!important}.facts{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ #tour video,#video-status{display:none!important}
+ .pdf-video-link{display:block!important;padding:18px!important;background:#20334c!important;border:1px solid #e7b761!important;border-radius:10px!important;break-inside:avoid!important}
+ .pdf-video-link a{color:#ffd178!important;text-decoration:underline!important;overflow-wrap:anywhere;font-size:13px!important}
+ .pdf-video-link small{color:#fff!important}
+ .foot{background:#0c1019!important;color:#fff!important}
+}
+
+/* Imagens e impressão consistentes em telas pequenas */
+@media screen and (max-width:480px){.brand{font-size:18px!important}.nav{grid-template-columns:repeat(2,minmax(0,1fr))!important}.top-inner{max-width:100vw}.actions .btn{font-size:11px!important}.media img{max-height:none}}
+@media print{.photo.hidden,.photo[hidden],.spec-panel[hidden]{display:block!important}.image-button,.photo{overflow:visible!important}.image-button img{transform:none!important}.gallery .image-button img{object-fit:contain!important}.photo-foot .minor{display:none!important}}
 </style></head><body>
 <header class="top"><div class="top-inner"><div class="brand">JMDT EMPREENDIMENTOS<small>Apresentação do estande institucional FNDE</small></div><nav aria-label="Navegação principal" class="nav"><a href="#inicio">Início</a><a href="#imagens">Imagens</a><a href="#distribuicao">Distribuição</a><a href="#tour">Vídeo</a><a href="#termo">Especificações do TR</a></nav><div class="actions"><button class="btn" id="print" type="button">Salvar PDF / Imprimir</button><button class="btn secondary" id="fullscreen" type="button">Tela cheia</button></div></div></header>
 <main><section class="hero" id="inicio"><div class="eyebrow">72ª Feira do Livro de Porto Alegre • 2026</div><h1>Estande institucional FNDE</h1><p>Apresentação do estande do Fundo Nacional de Desenvolvimento da Educação (FNDE), com ambientes destinados à divulgação do PNLD, à exposição de livros, à recepção do público e à realização de atividades educativas.</p><div class="facts"><div class="fact"><small>Área do estande</small><strong>50 m²</strong></div><div class="fact"><small>Local</small><strong>Praça da Alfândega • Porto Alegre/RS</strong></div><div class="fact"><small>Período do evento</small><strong>30/10 a 15/11/2026</strong></div></div></section>
@@ -18,7 +88,7 @@
 <article class="photo" data-category="internas"><button aria-label="Ampliar Atendimento e recepção" class="image-button" data-title="Atendimento e recepção" data-view="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/WhatsApp%20Image%202026-10-07%20at%2015.45.24.jpeg" type="button"><img alt="Atendimento e recepção" decoding="async" loading="lazy" src="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/WhatsApp%20Image%202026-10-07%20at%2015.45.24.jpeg"/><span class="image-error" hidden="">Não foi possível carregar esta imagem. <span>Ver arquivo original ↗</span></span></button><div class="photo-foot"><strong>Atendimento e recepção</strong><div><button class="minor" data-title="Atendimento e recepção" data-view="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/WhatsApp%20Image%202026-10-07%20at%2015.45.24.jpeg" type="button">Ampliar</button><a class="minor" href="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/WhatsApp%20Image%202026-10-07%20at%2015.45.24.jpeg" rel="noopener noreferrer" target="_blank">Abrir original ↗</a></div></div></article>
 <article class="photo" data-category="internas"><button aria-label="Ampliar Sala de reunião e área de leitura" class="image-button" data-title="Sala de reunião e área de leitura" data-view="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/WhatsApp%20Image%202026-10-07%20at%2016.12.08.jpeg" type="button"><img alt="Sala de reunião e área de leitura" decoding="async" loading="lazy" src="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/WhatsApp%20Image%202026-10-07%20at%2016.12.08.jpeg"/><span class="image-error" hidden="">Não foi possível carregar esta imagem. <span>Ver arquivo original ↗</span></span></button><div class="photo-foot"><strong>Sala de reunião e área de leitura</strong><div><button class="minor" data-title="Sala de reunião e área de leitura" data-view="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/WhatsApp%20Image%202026-10-07%20at%2016.12.08.jpeg" type="button">Ampliar</button><a class="minor" href="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/WhatsApp%20Image%202026-10-07%20at%2016.12.08.jpeg" rel="noopener noreferrer" target="_blank">Abrir original ↗</a></div></div></article></div><p class="notice hidden" id="gallery-empty">Não há imagens nesta categoria.</p></section>
 <section id="distribuicao"><div class="section-head"><div class="eyebrow">Planta baixa e organização dos ambientes</div><h2>Distribuição do estande</h2></div><div class="columns"><div class="media"><h3 class="plant-title">Planta baixa do estande</h3><button class="image-button" data-title="Planta baixa — distribuição do estande FNDE" data-view="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/WhatsApp%20Image%202026-10-07%20at%2017.29.04.jpeg" style="height:auto;min-height:260px" type="button"><img alt="Planta baixa do estande FNDE, com a distribuição dos ambientes" loading="eager" src="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/WhatsApp%20Image%202026-10-07%20at%2017.29.04.jpeg" style="display:block;width:100%;height:auto;max-height:none;object-fit:contain"/></button><div class="media-note">Planta baixa do estande — clique para ampliar a imagem.</div></div><div class="panel"><h3>Espaços previstos</h3><ul><li>Recepção e atendimento ao público.</li><li>Área de exposição e consulta de livros.</li><li>Espaço de leitura e contação de histórias.</li><li>Sala de reuniões.</li><li>Ambiente de apoio para a equipe e guarda de materiais.</li><li>Circulação e acessibilidade para visitantes.</li></ul></div></div></section>
-<section id="tour"><div class="section-head"><div class="eyebrow">Apresentação em vídeo</div><h2>Vídeo do estande</h2></div><div class="media"><video controls="" id="tour-video" playsinline="" preload="auto"><source src="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/V%C3%ADdeo%20sem%20t%C3%ADtulo-07_10_2026,%2016_40.mp4" type="video/mp4"/>Seu navegador não suporta a reprodução deste vídeo.</video><div class="media-note" id="video-status">Se o vídeo não carregar no navegador, utilize <a href="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/V%C3%ADdeo%20sem%20t%C3%ADtulo-07_10_2026,%2016_40.mp4" rel="noopener noreferrer" style="color:var(--accent)" target="_blank">Abrir vídeo original ↗</a>.</div></div></section>
+<section id="tour"><div class="section-head"><div class="eyebrow">Apresentação em vídeo</div><h2>Vídeo do estande</h2></div><div class="media"><video controls="" id="tour-video" playsinline="" preload="auto"><source src="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/V%C3%ADdeo%20sem%20t%C3%ADtulo-07_10_2026,%2016_40.mp4" type="video/mp4"/>Seu navegador não suporta a reprodução deste vídeo.</video><div class="pdf-video-link"><strong>Assista ao vídeo do estande:</strong><p><a href="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/V%C3%ADdeo%20sem%20t%C3%ADtulo-07_10_2026,%2016_40.mp4" target="_blank" rel="noopener noreferrer">Abrir vídeo do estande FNDE ↗</a></p><small>Na versão PDF, clique no link para acessar o vídeo completo.</small></div><div class="media-note" id="video-status">Se o vídeo não carregar no navegador, utilize <a href="https://sgatudoparaseuevento.com/carol/storage/feiradolivro/V%C3%ADdeo%20sem%20t%C3%ADtulo-07_10_2026,%2016_40.mp4" rel="noopener noreferrer" style="color:var(--accent)" target="_blank">Abrir vídeo original ↗</a>.</div></div></section>
 <section id="termo"><div class="section-head"><div class="eyebrow">Consulta por categoria</div><h2>Especificações do Termo de Referência</h2><p>Informações organizadas a partir das especificações mencionadas no material de apresentação fornecido. Para conferência contratual, prevalece o Termo de Referência oficial.</p></div><div aria-label="Categorias do Termo de Referência" class="spec-tabs" role="tablist"><button aria-controls="panel-ambientes" aria-selected="true" class="minor" data-tab="ambientes" id="tab-ambientes" role="tab" type="button">Ambientes</button><button aria-controls="panel-moveis" aria-selected="false" class="minor" data-tab="moveis" id="tab-moveis" role="tab" type="button">Mobiliário</button><button aria-controls="panel-equip" aria-selected="false" class="minor" data-tab="equip" id="tab-equip" role="tab" type="button">Equipamentos</button><button aria-controls="panel-seguranca" aria-selected="false" class="minor" data-tab="seguranca" id="tab-seguranca" role="tab" type="button">Acessibilidade e segurança</button><button aria-controls="panel-servicos" aria-selected="false" class="minor" data-tab="servicos" id="tab-servicos" role="tab" type="button">Serviços e equipe</button></div>
 <div aria-labelledby="tab-ambientes" class="spec-panel" id="panel-ambientes" role="tabpanel"><div class="specgrid"><div class="panel"><h3>Áreas de público</h3><ul><li>Espaço para recepção, atendimento e ações do PNLD.</li><li>Exposição de livros em estantes e módulos centrais.</li><li>Arquibancada para leitura e contação de histórias.</li></ul></div><div class="panel"><h3>Ambientes de apoio</h3><ul><li>Sala de reunião fechada e climatizada.</li><li>Sala de apoio e depósito com prateleiras para livros.</li><li>Área de copa e apoio para água e café.</li></ul></div></div></div>
 <div aria-labelledby="tab-moveis" class="spec-panel" hidden="" id="panel-moveis" role="tabpanel"><div class="specgrid"><div class="panel"><h3>Mobiliário que estará no estande</h3><ul><li>Arquibancada com 3 degraus grandes e 5 menores, conforme descrição apresentada.</li><li>Assentos acolchoados e 4 pufes nas cores cinza/amarelo.</li><li>3 módulos centrais de exposição azul e branco, com 5 níveis de prateleiras.</li><li>Balcão de atendimento.</li></ul></div><div class="panel"><h3>Complementos internos</h3><ul><li>Mobiliário da sala de reunião.</li><li>Bancada de apoio para copa.</li><li>Prateleiras de aço para armazenamento de livros.</li></ul></div></div></div>
@@ -30,9 +100,16 @@
 <div aria-hidden="true" aria-labelledby="overlay-title" aria-modal="true" class="overlay" id="overlay" role="dialog"><div class="bar"><div class="title" id="overlay-title">Imagem</div><div><button aria-label="Diminuir zoom" class="minor" id="zoom-out" type="button">− Zoom</button><button class="minor" id="zoom-reset" type="button">Ajustar</button><button aria-label="Aumentar zoom" class="minor" id="zoom-in" type="button">+ Zoom</button><a class="minor" id="overlay-original" rel="noopener noreferrer" target="_blank">Abrir original ↗</a><button class="minor" id="overlay-close" type="button">Fechar ×</button></div></div><div class="stage" id="stage"><img alt="Imagem em tamanho ampliado" id="overlay-img"/><div class="error" id="overlay-error">Não foi possível carregar a imagem ampliada. Use “Abrir original” para consultar o arquivo.</div></div></div>
 <script>
 (()=>{'use strict';
+// Limpa qualquer bloqueio de rolagem ao carregar ou voltar à página.
+document.body.style.overflow='auto';
 const $=id=>document.getElementById(id);
-$('print').addEventListener('click',()=>window.print());
+const printButton=$('print');
+const allPhotos=[...document.querySelectorAll('.photo img, #distribuicao img')];
+function prioritizePhotos(){allPhotos.forEach(i=>{i.loading='eager';i.decoding='sync'; if(!i.complete && i.src) {const link=i.src; i.src=link;}});}
+async function waitForPhotos(){prioritizePhotos();await Promise.all(allPhotos.map(i=>new Promise(resolve=>{if(i.complete){resolve();return;}const finish=()=>resolve();i.addEventListener('load',finish,{once:true});i.addEventListener('error',finish,{once:true});setTimeout(finish,9000);})));}
+printButton.addEventListener('click',async()=>{printButton.disabled=true;const prev=printButton.textContent;printButton.textContent='Preparando fotos…';try{await waitForPhotos();window.print();}finally{printButton.disabled=false;printButton.textContent=prev;}});
 $('fullscreen').addEventListener('click',async()=>{try{if(document.fullscreenElement){await document.exitFullscreen();}else if(document.documentElement.requestFullscreen){await document.documentElement.requestFullscreen();}else{alert('Tela cheia não é compatível com este navegador.');}}catch(e){alert('O navegador não permitiu ativar a tela cheia.');}});
+window.addEventListener('beforeprint',prioritizePhotos);
 document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{const cat=button.dataset.filter;let visible=0;document.querySelectorAll('.photo').forEach(photo=>{const show=cat==='todas'||photo.dataset.category===cat;photo.hidden=!show;photo.classList.toggle('hidden',!show);if(show)visible++});document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));$('gallery-empty').classList.toggle('hidden',visible!==0);}));
 document.querySelectorAll('[data-tab]').forEach(button=>button.addEventListener('click',()=>{const tab=button.dataset.tab;document.querySelectorAll('[data-tab]').forEach(b=>{b.setAttribute('aria-selected',String(b===button));b.tabIndex=b===button?0:-1});document.querySelectorAll('.spec-panel').forEach(panel=>panel.hidden=panel.id!=='panel-'+tab);}));
 const overlay=$('overlay'),img=$('overlay-img');let zoom=1,previousFocus=null;
@@ -41,7 +118,7 @@ function openViewer(url,title){previousFocus=document.activeElement;img.style.di
 function closeViewer(){overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true');document.body.style.overflow='';img.removeAttribute('src');previousFocus?.focus?.()}
 document.querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',()=>openViewer(button.dataset.view,button.dataset.title||'Imagem do estande')));
 $('overlay-close').addEventListener('click',closeViewer);$('zoom-in').addEventListener('click',()=>setZoom(zoom*1.25));$('zoom-out').addEventListener('click',()=>setZoom(zoom/1.25));$('zoom-reset').addEventListener('click',()=>setZoom(1));overlay.addEventListener('click',e=>{if(e.target===overlay)closeViewer()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))closeViewer()});img.addEventListener('error',()=>{img.style.display='none';$('overlay-error').style.display='block'});
-document.querySelectorAll('.image-button img').forEach(pic=>{const fail=()=>{pic.style.visibility='hidden';const msg=pic.parentElement.querySelector('.image-error');if(msg)msg.hidden=false};pic.addEventListener('error',fail);if(pic.complete&&!pic.naturalWidth)fail()});
+document.querySelectorAll('.image-button img').forEach(pic=>{const fail=()=>{const msg=pic.parentElement.querySelector('.image-error');if(msg)msg.hidden=false};pic.addEventListener('load',()=>{pic.style.visibility='visible';const msg=pic.parentElement.querySelector('.image-error');if(msg)msg.hidden=true});pic.addEventListener('error',fail);if(pic.complete&&!pic.naturalWidth)fail()});
 $('tour-video').addEventListener('error',()=>{$('video-status').insertAdjacentText('afterbegin','Não foi possível reproduzir o vídeo neste navegador. ')});
 })();
 </script></body></html>
